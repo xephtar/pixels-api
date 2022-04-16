@@ -1,0 +1,1 @@
+web: gunicorn pixelsapi.asgi:application -k uvicorn.workers.UvicornWorker

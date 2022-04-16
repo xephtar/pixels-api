@@ -21,11 +21,13 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from pixelsapi.views import MyObtainTokenPairView
+from pixelsapi.views import MyObtainTokenPairView, LogoutView, SignupViewSet
 
 urlpatterns = [
     path('canvas/', include('canvas.urls')),
     path('admin/', admin.site.urls),
     path('token/', MyObtainTokenPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('logout/', LogoutView.as_view(), name='auth_logout'),
+    path('register/', SignupViewSet.as_view({'post': 'create'}), name='register')
 ]
