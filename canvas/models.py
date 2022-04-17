@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class CanvasData(models.Model):
     id = models.AutoField(primary_key=True)
-    data = models.TextField(blank=False, unique=True)
+    data = models.TextField(blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
