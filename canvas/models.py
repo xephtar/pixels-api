@@ -11,4 +11,4 @@ class CanvasData(models.Model):
 class Check(models.Model):
     id = models.AutoField(primary_key=True)
     user_id = models.TextField(blank=False, unique=True)
-    end_time = models.DateTimeField(default=timezone.now() + timezone.timedelta(minutes=3))
+    end_time = models.DateTimeField(default=timezone.now)
