@@ -14,7 +14,8 @@ class CanvasConsumer(AsyncWebsocketConsumer):
 
     @database_sync_to_async
     def create_chat(self, data):
-        new_msg, is_created = CanvasData.objects.get_or_create(data=data)
+        new_msg = CanvasData.objects.create(data=data)
+        new_msg.save()
         return new_msg
 
     async def connect(self):
