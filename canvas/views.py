@@ -63,14 +63,16 @@ class DrawView(APIView):
         return Response(data={"canDraw": False, "exp": remaining}, status=200)
 
     def post(self, request):
+        first_draw = False
         try:
             last_check = Check.objects.get(user_id=request.user.id)
         except Check.DoesNotExist:
             last_check = Check.objects.create(user_id=request.user.id, end_time=timezone.now() + timezone.timedelta(minutes=3))
             last_check.save()
+            first_draw = True
 
         # First draw
-        if not last_check:
+        if first_draw:
             return Response(data={"canDraw": True, "exp": 180}, status=200)
 
         time = last_check.end_time < timezone.now()
