@@ -51,7 +51,7 @@ class CanvasConsumer(AsyncWebsocketConsumer):
     async def canvas_data(self, event):
         data = event['data']
         new_msg = await self.create_chat(data)  # It is necessary to await creation of messages
-
+        print(new_msg.data)
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
             'data': new_msg.data
