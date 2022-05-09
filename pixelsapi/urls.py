@@ -13,8 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from abc import ABC
-
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import (
@@ -25,6 +23,7 @@ from pixelsapi.views import MyObtainTokenPairView, LogoutView, SignupViewSet
 
 urlpatterns = [
     path('canvas/', include('canvas.urls')),
+    path('contact/', include('contact.urls')),
     path('admin/', admin.site.urls),
     path('token/', MyObtainTokenPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
